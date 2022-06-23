@@ -1,2 +1,3 @@
 *.csv
 *.swo
+*.ipynb_checkpoints/
