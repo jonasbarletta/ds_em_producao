@@ -4,17 +4,21 @@ O Projeto das Lojas Rossmann é um projeto de Ciências de Dados para a prediç�
 
 Esse projeto é uma proposta do curso 'DS em Produção', da Comunidade DS, baseado no desafio 'Rossmann Store Sales' da plataforma Kaggle. O enunciado ofical do problema está disponível em [Kaggle](https://www.kaggle.com/c/rossmann-store-sales).
 
-Para solução do desafio dividimos em algumas etapas cíclicas (como mostra a imagem abaixo) de forma que apresentaremos aqui um cíclo completo dessas etapas. Começando na 'Questão de Negócio' até a 'Avaliação do Algoritmo' onde analisaremos a performance do modelo e decidiremos se é necessário realizar mais um ciclo antes de colocar o 'Modelo em Produção'.
-
-![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/Questao%20de%20Negocio%20(1).png)
-
 # 1 Questão de Negócio
 
 A farmaceutica Rossmann é uma rede de farmárcia na Europa que atualmente conta com mais de 4000 lojas atuando na Alemanha, Polônia, Hungria, República Tcheca, Turquia, Albania e Espanha. 
 
 O CFO da empresa fez uma reunião com todos os gerentes de loja e pediu para que cada um deles trouxesse uma previsão diária das próximas seis semanas de vendas. Após essa reunião os gerentes entraram em contato para realizarmos a previsão de vendas de cada uma das lojas.
 
-# 2 Entendimento do Negócio
+# 2 Planejamento da Solução
+
+Para solução do desafio dividimos em algumas etapas cíclicas (como mostra a imagem abaixo) de forma que apresentaremos aqui um cíclo completo dessas etapas. Começando na 'Questão de Negócio' até a 'Avaliação do Algoritmo' onde analisaremos a performance do modelo e decidiremos se é necessário realizar mais um ciclo antes de colocar o 'Modelo em Produção'.
+
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/Questao%20de%20Negocio%20(1).png)
+
+Vamos entender um pouco melhor como foi cada etapa do projeto.
+
+### 2.1 Entendimento do Negócio
 
 Antes de partir para etapas mais técnicas é necessário entender um pouco mais sobre as motivações do problema. Para isso vamos responder quatro perguntas:
 
@@ -32,7 +36,57 @@ Podemos ver que o problema é do CFO da empresa e não dos gerentes. Então o CF
 
 - Qual é o formato da solução? (Granularidade, tipo de problema, potenciais métodos, formato da entrega)
 
-A granularidade será vendas por dia por loja. O problema é de previsão de vendas. Utilizaremos regressão de séries temporais. Ao final do projeto o CFO poderá acessar a solução via celular com acesso a internet.
+A granularidade será vendas por dia por loja. O problema é de previsão de vendas. Utilizaremos regressão de séries temporais. Ao final do projeto o CFO  poderá acessar a solução via celular com acesso a interne
+
+### 2.3 Coleta de Dados
+
+Por se tratar de um desafio da plataforma Kaggle, os dados já estão coletados bastando assim acessá-los. Tais dados podem ser acessados pelo [link](https://www.kaggle.com/competitions/rossmann-store-sales/data). Nessa página estão disponíveis quatro arquivos: 
+
+- train.csv: histórico de dados incluindo as vendas
+- test.csv: histórico de dados excluindo as vendas
+- sample_submission.csv: modelo de submissão do desafio (não utilizaremos)
+- store.csv: informações suplementares sobre as lojas
+
+### 2.4 Limpeza dos Dados
+
+Nessa etapa começamos a parte mais técnica do projeto, utilizando Python fizemos algumas mudanças nos conjuntos de dados de modo a torna-lo mais funcional para etapas futuras, como a Análise Exploratória dos Dados e a implementação dos Modelos de Machine Learning. 
+
+### 2.5 Análise Exploratória dos Dados
+
+Aqui começamos fazendo o Mapa Mental de Hipóteses abaixo. Redigimos algumas hipóteses de negócios e verificamos a veracidade delas. Falaremos sobre os melhores Insights mais para frente.
+
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/mindmap_hypoteses.png)
+
+### 2.6 Modelagem dos Dados
+
+Começamos essa etapa com a preparação dos dados para a implementação dos modelos de Machine Learning. Para os dados númericos e não ciclícos utilizamos algumas estratégias de *rescaling* como *RobustScaler* e *MinMaxScaler*. Já para os dados categóricos fizemos o *encoding* dessas variáveis, entre as estratégias utilizadas estão: *One Hot Encoding*, *Label Encoding* e *Ordinal Encoding*. Para a variável resposta ('sales') fizemos uma transformação logarítimica e para as variáveis de natureza cíclica realizamos transformações trigonométricas.
+
+Após as transformações das variáveis, é necessário selecionar os melhores atributos para o treino dos modelos de ML. Para isso usamos o algoritmo Boruta, que é um métodos baseado Random Forest e funcionamento muito bem com modelos de árvore como Random Forest e XGBoost.
+
+### 2.7 Algoritmos de Machine Learning
+
+Agora com as variáveis ajustadas e selecionadas, estamos prontos para aplicar os algoritmos de Machine Learning. Nesse projeto testamos cinco modelos: 
+
+- Modelo de Média
+- Modelo de Regressão Linear
+- Modelo de Regressão Linear Regularizado (Lasso)
+- Modelo de Regressão Random Forest
+- Modelo de Regressão XGBoost
+
+
+
+### 2. Produto Final
+- Insights de negócio realizados a partir da Análise Exploratória de Dados
+- Bot no Telegram que indica a previsão de vendas de qualquer loja
+
+### 2. Ferramentas Utilizadas
+- Python 3.10
+- Jupyter Notebook
+- Github
+- Heroku 
+- Telegram
+
+
 
 # 3 Coleta de Dados
 
@@ -60,7 +114,7 @@ Os atributos apresentados nos conjunto de dados são:
 | CompetitionOpenSince[Month/Year]  | A data (mês/ano) aproximada de quando o competidor mais próximo abriu |
 | Promo                             | Indica se a lojas está com promoção no dia |
 | Promo2                            | É uma promoção contínua e consecutiva para algumas lojas (0: não está participando, 1: está participando) |
-| Promo2Since[Year/Week]            | Descreve a semana do ano em que a loja começou a participar da Promo2 |
+| Promo2Since[Year/Week]            | Descreve a semana e ano em que a loja começou a participar da Promo2 |
 | PromoInterval                     | Descreve os intervalos consecutivos em que a Promo2 é iniciada, nomeando os meses em que a promoção é iniciada novamente |
 
 Agora que os dados estão coletados partiremos para a limpeza dos dados.
