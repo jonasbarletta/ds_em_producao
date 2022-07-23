@@ -119,21 +119,27 @@ Aqui começamos fazendo o Mapa Mental de Hipóteses abaixo. Fizemos as análises
 Analisamos várias hipóteses, aqui apresentaremos apenas os cinco Insights mais interessantes
 
 - Lojas deveriam vender mais no segundo semestre do ano.
+
 Verdadeiro. Lojas vendem mais no segundo semestre.
 
 -  Lojas abertas durante o feriado de Natal deveriam vender mais.
+
 Verdadeiro. Lojas vendem, na média, mais durante o feriado de Natal e de Páscoa.
 
 - Lojas com maior sortimentos deveriam vender mais.
+
 Verdadeiro. Lojas com maior sortimento vendem mais, na média.
 
 - Lojas com mais promoções consecutivas deveriam vender mais.
+
 Falso. Lojas com mais promoções consecutivas vendem menos.
 
 - Lojas deveriam vender menos aos finais de semana.
+
 Verdadeiro. Lojas vendem menos nos finais de semana.
 
 - Lojas deveriam vender menos durante os feriados escolares.
+
 Falso. Na média, lojas vendem mais durante os feriados escolares, com exceção dos meses de setembro e dezembro.
 
 
