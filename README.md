@@ -16,9 +16,22 @@ Para solução do desafio dividimos em algumas etapas cíclicas (como mostra a i
 
 ![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/Questao%20de%20Negocio%20(1).png)
 
+### 2.1 Produto Final
+- Insights de negócio realizados a partir da Análise Exploratória de Dados
+- Bot no Telegram que indica a previsão de vendas de qualquer loja
+
+## 2.2 Ferramentas Utilizadas
+- Python 3.10
+- Jupyter Notebook
+- Github
+- Heroku 
+- Telegram
+
 Vamos entender um pouco melhor como foi cada etapa do projeto.
 
-### 2.1 Entendimento do Negócio
+# 3 Etapas do Projeto
+
+## 3.1 Entendimento do Negócio
 
 Antes de partir para etapas mais técnicas é necessário entender um pouco mais sobre as motivações do problema. Para isso vamos responder quatro perguntas:
 
@@ -38,57 +51,7 @@ Podemos ver que o problema é do CFO da empresa e não dos gerentes. Então o CF
 
 A granularidade será vendas por dia por loja. O problema é de previsão de vendas. Utilizaremos regressão de séries temporais. Ao final do projeto o CFO  poderá acessar a solução via celular com acesso a interne
 
-### 2.3 Coleta de Dados
-
-Por se tratar de um desafio da plataforma Kaggle, os dados já estão coletados bastando assim acessá-los. Tais dados podem ser acessados pelo [link](https://www.kaggle.com/competitions/rossmann-store-sales/data). Nessa página estão disponíveis quatro arquivos: 
-
-- train.csv: histórico de dados incluindo as vendas
-- test.csv: histórico de dados excluindo as vendas
-- sample_submission.csv: modelo de submissão do desafio (não utilizaremos)
-- store.csv: informações suplementares sobre as lojas
-
-### 2.4 Limpeza dos Dados
-
-Nessa etapa começamos a parte mais técnica do projeto, utilizando Python fizemos algumas mudanças nos conjuntos de dados de modo a torna-lo mais funcional para etapas futuras, como a Análise Exploratória dos Dados e a implementação dos Modelos de Machine Learning. 
-
-### 2.5 Análise Exploratória dos Dados
-
-Aqui começamos fazendo o Mapa Mental de Hipóteses abaixo. Redigimos algumas hipóteses de negócios e verificamos a veracidade delas. Falaremos sobre os melhores Insights mais para frente.
-
-![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/mindmap_hypoteses.png)
-
-### 2.6 Modelagem dos Dados
-
-Começamos essa etapa com a preparação dos dados para a implementação dos modelos de Machine Learning. Para os dados númericos e não ciclícos utilizamos algumas estratégias de *rescaling* como *RobustScaler* e *MinMaxScaler*. Já para os dados categóricos fizemos o *encoding* dessas variáveis, entre as estratégias utilizadas estão: *One Hot Encoding*, *Label Encoding* e *Ordinal Encoding*. Para a variável resposta ('sales') fizemos uma transformação logarítimica e para as variáveis de natureza cíclica realizamos transformações trigonométricas.
-
-Após as transformações das variáveis, é necessário selecionar os melhores atributos para o treino dos modelos de ML. Para isso usamos o algoritmo Boruta, que é um métodos baseado Random Forest e funcionamento muito bem com modelos de árvore como Random Forest e XGBoost.
-
-### 2.7 Algoritmos de Machine Learning
-
-Agora com as variáveis ajustadas e selecionadas, estamos prontos para aplicar os algoritmos de Machine Learning. Nesse projeto testamos cinco modelos: 
-
-- Modelo de Média
-- Modelo de Regressão Linear
-- Modelo de Regressão Linear Regularizado (Lasso)
-- Modelo de Regressão Random Forest
-- Modelo de Regressão XGBoost
-
-
-
-### 2. Produto Final
-- Insights de negócio realizados a partir da Análise Exploratória de Dados
-- Bot no Telegram que indica a previsão de vendas de qualquer loja
-
-### 2. Ferramentas Utilizadas
-- Python 3.10
-- Jupyter Notebook
-- Github
-- Heroku 
-- Telegram
-
-
-
-# 3 Coleta de Dados
+## 3.2 Coleta de Dados
 
 Por se tratar de um desafio da plataforma Kaggle, os dados já estão coletados bastando assim acessá-los. Tais dados podem ser acessados pelo [link](https://www.kaggle.com/competitions/rossmann-store-sales/data). Nessa página estão disponíveis quatro arquivos: 
 
@@ -104,6 +67,8 @@ Os atributos apresentados nos conjunto de dados são:
 | ID                                | Representa uma loja em  uma data específica que foram relaizadas as vendas |   
 | Store                             | Número único de cada loja |
 | Sales                             | Total de vendas realizada em dia |
+| Date                              | Data |
+| DayOfWeek                         | Dia da semana |
 | Customers                         | Número de clientes de um dia |
 | Open                              | Indica se a loja estava ou não aberta naquela data (0: fechada ou 1: aberta) |
 | StateHoliday                      | Indica um feriado de estado (a: public holiday, b: Easter holiday, c: Christmas, 0: None) |
@@ -119,5 +84,69 @@ Os atributos apresentados nos conjunto de dados são:
 
 Agora que os dados estão coletados partiremos para a limpeza dos dados.
 
-# 4 Limpeza dos Dados
+## 3.3 Limpeza dos Dados
+
+Nessa etapa começamos a parte mais técnica do projeto, utilizando Python fizemos algumas mudanças nos conjuntos de dados de modo a torna-lo mais funcional para etapas futuras, como a Análise Exploratória dos Dados e a implementação dos Modelos de Machine Learning. Algumas dessas mudanças foram:
+
+- lojas sem CompetitionDistance foram consideradas sem competidores próximos, então completamos com 200000 que é um valor muito superior aos outros;
+- lojas sem CompetitionOpenSince[Month/Year] também foram consideradas sem competidores próximos, então completamos com a própria data da colunas 'date';
+- o mesmo foi realizado para lojas sem Promo2Since[Year/Week];
+- lojas sem venda ou que estavam fechadas em determinado dia foram desconsideradas no treinamento do modelo.
+
+
+## 3.4 Análise Exploratória dos Dados
+
+Aqui começamos fazendo o Mapa Mental de Hipóteses abaixo. Fizemos as análises univariadas, bivariadas e multivariadas. Para as bivariadas, redigimos algumas hipóteses de negócios e verificamos a veracidade delas. 
+
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/mindmap_hypoteses.png)
+
+### 3.4.1 Análise Univariada
+
+#### 3.4.1.1 Variável Resposta
+
+
+
+## 3.5 Modelagem dos Dados
+
+Começamos essa etapa com a preparação dos dados para a implementação dos modelos de Machine Learning. Para os dados númericos e não ciclícos utilizamos algumas estratégias de *rescaling* como *RobustScaler* e *MinMaxScaler*. Já para os dados categóricos fizemos o *encoding* dessas variáveis, entre as estratégias utilizadas estão: *One Hot Encoding*, *Label Encoding* e *Ordinal Encoding*. Para a variável resposta ('sales') fizemos uma transformação logarítimica e para as variáveis de natureza cíclica realizamos transformações trigonométricas.
+
+Após as transformações das variáveis, é necessário selecionar os melhores atributos para o treino dos modelos de ML. Para isso usamos o algoritmo Boruta, que é um métodos baseado Random Forest e funcionamento muito bem com modelos de árvore como Random Forest e XGBoost.
+
+## 3.6 Algoritmos de Machine Learning
+
+Agora com as variáveis ajustadas e selecionadas, estamos prontos para aplicar os algoritmos de Machine Learning. Nesse projeto testamos cinco modelos: 
+
+- Modelo de Média
+- Modelo de Regressão Linear
+- Modelo de Regressão Linear Regularizado (Lasso)
+- Modelo de Regressão Random Forest
+- Modelo de Regressão XGBoost
+
+Para cada modelo calculamos três erros:
+
+- MAE (Mean Absolute Error)
+- MAPE (Mean Absolute Percentual Error)
+- RMSE (Root Mean Square Error)
+
+Os erros encontrados para cada modelos foram:
+
+| Modelo                        | MAE        | MAPE    | RMSE       |
+|-------------------------------|------------|---------|------------|
+| Média                         | 1354.80035 | 0.20640 | 1835.13554 |
+| Regressão Linear              | 1870.16131 | 0.29509 | 2667.88331 |
+| Regressão Linear Regularizado | 1891.19496 | 0.28987 | 2741.00328 |
+| Regressão Random Forest       | 723.53226  | 0.10699 | 1077.12693 |
+| Rregressão XGBoost            | 871.06206	 | 0.12813 | 1271.58178 |
+
+Após o cross-validation os erros foram:
+
+| Modelo                        | MAE                   | MAPE              | RMSE                   |
+|-------------------------------|-----------------------|-------------------|------------------------|
+| Regressão Linear              | 1925.3411 +/- 39.4565 |	0.2917 +/- 0.0058 |	2758.5347 +/- 71.9813  |
+| Regressão Linear Regularizado | 1958.2725 +/- 49.3824 |	0.2865 +/- 0.0023	| 2848.217 +/- 78.8584   |
+| Regressão Random Forest       | 790.9915 +/- 81.7962  |	0.1126 +/- 0.0114 |	1201.1863 +/- 150.5484 |
+| Rregressão XGBoost            | 961.176 +/- 66.5849   |	0.134 +/- 0.007	  | 1403.1786 +/- 96.2286  |
+
+O melhor resultado deu-se pela Regressão Random Forest, porém por questão de estudo aplicaremos a Regressão XGBoost que não teve um resultado tão abaixo mas que possui um custo de armazenamento muito menor que o da Random Forest.
+
 
