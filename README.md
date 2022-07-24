@@ -212,7 +212,7 @@ Para que o CFO tivesse todas as informações sobre as lojas de qualquer lugar c
 
 
 
-![telegram](https://user-images.githubusercontent.com/102927918/180664797-ee82a775-94f0-48fa-ba0b-b7cfc82da5b9.mp4)
+!(https://user-images.githubusercontent.com/102927918/180664797-ee82a775-94f0-48fa-ba0b-b7cfc82da5b9.mp4)
 
 
 
