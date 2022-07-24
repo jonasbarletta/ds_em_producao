@@ -223,7 +223,7 @@ Abaixo seguem quatro gráfico que resumem a avaliação do modelo de Machine Lea
 
 ![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/avaliacao_erro.png)
 
-No primeiro gráfico, vemos o quão próximas estão as curvas de previsão e de vendas. O segundo é um gráfico da data x taxa de erro, onde a linha tracejada indica que a previsão foi igual a venda, nota-se que a taxa foi no máximo 15% superior e no mínimo 15% inferior. O terceiro gráfico é um histograma do erros (diferença entre a previsão e o valor real), notamos que é muito próxma da curva normal, o que indica um ótimo resultado. E no último vemos que a distribuição das previsão com seus erros formam um "tubo", com poucos *outliers*, o que também caracteriza um bom resultado.
+No primeiro gráfico, vemos o quão próximas estão as curvas de previsão e de vendas. O segundo é um gráfico da data x taxa de erro, onde a linha tracejada indica que a previsão foi igual a venda, nota-se que a taxa foi no máximo 15% superior e no mínimo 15% inferior. O terceiro gráfico é um histograma dos erros (diferença entre a previsão e o valor real), notamos que é muito próxma da curva normal, o que indica um ótimo resultado. E no último vemos que a distribuição das previsão com seus erros formam um "tubo", com poucos *outliers*, o que também caracteriza um bom resultado.
 
 ## 3.8 Deploy do Modelo em Produção
 
