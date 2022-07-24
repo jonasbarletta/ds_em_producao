@@ -231,7 +231,23 @@ Para que o CFO tivesse todas as informações sobre as lojas de qualquer lugar c
 
 https://user-images.githubusercontent.com/102927918/180664797-ee82a775-94f0-48fa-ba0b-b7cfc82da5b9.mp4
 
+# 4 Conclusão
+
+O projeto foi concluído com sucesso, conseguimos prever a venda de cada um das lojas com um erro média de 10%. Esse calculos nos permitiu prever que a venda total de todas as lojas Rossmann seria em torno de $ 290 milhões. Para esses cálculos modelamos o problema com uma Regressão XGBoost que obteve uma performance muito boa.
+
+A Análise Exploratória dos Dados se mostrou muito rica para o entendimento o projeto e com certeza é uma etapa que não deve ser descartada, mesmo que interfira diretamente no resultado o modelo.
+
+Com os resultados obtidos foi possível colocar o projeto em produção já na primeira volta do ciclo de etapas. O deploy foi realizado no Heroku e o Bot do Telegram funciona em qualquer lugar com acesso a internet.
 
 
+# 5 Próximos Passos
+
+Após o primeiro ciclo das etapas novos ciclos devem ser realizados, afim que novos Insights possam ser gerados na etapa de Análise Exploratória dos Dados ou que alguns atributos possam ser acrescentados ou retirados do treinamento do modelo de ML. 
+
+
+# 6 Referências
+[1] LOPES, Meigarom. Curso DS em Produção - Comunidade DS.
+[2] Wikpédia. Cramér's V, https://en.wikipedia.org/wiki/Cram%C3%A9r%27s_V, último acesso: 24/07/2022
+[3] ROY, Baijayanta, All about Categorical Variable Encoding, https://towardsdatascience.com/all-about-categorical-variable-encoding-305f3361fd02, último acesso: 24/07/2022
 
 
