@@ -106,39 +106,52 @@ Aqui começamos fazendo o Mapa Mental de Hipóteses abaixo. Fizemos as análises
 
 #### 3.4.1.1 Variável Resposta
 
-
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/variavel_resposta.png)
 
 #### 3.4.1.2 Variáveis Numéricas
 
-
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/univariada_variaveis_numericas.png)
 
 #### 3.4.1.3 Variáveis Categóricas
 
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/univariada_variaveis_categoricas.png)
 
 ### 3.4.2 Análise Bivariada
 Analisamos várias hipóteses, aqui apresentaremos apenas os cinco Insights mais interessantes
 
 - Lojas deveriam vender mais no segundo semestre do ano.
 
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/bivariada_1.png)
+
 Verdadeiro. Lojas vendem mais no segundo semestre.
 
 -  Lojas abertas durante o feriado de Natal deveriam vender mais.
+
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/bivariada_2.png)
 
 Verdadeiro. Lojas vendem, na média, mais durante o feriado de Natal e de Páscoa.
 
 - Lojas com maior sortimentos deveriam vender mais.
 
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/bivariada_3.png)
+
 Verdadeiro. Lojas com maior sortimento vendem mais, na média.
 
 - Lojas com mais promoções consecutivas deveriam vender mais.
+
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/bivariada_4.png)
 
 Falso. Lojas com mais promoções consecutivas vendem menos.
 
 - Lojas deveriam vender menos aos finais de semana.
 
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/bivariada_5.png)
+
 Verdadeiro. Lojas vendem menos nos finais de semana.
 
 - Lojas deveriam vender menos durante os feriados escolares.
+
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/bivariada_6.png)
 
 Falso. Na média, lojas vendem mais durante os feriados escolares, com exceção dos meses de setembro e dezembro.
 
@@ -186,5 +199,22 @@ Após o cross-validation os erros foram:
 | Rregressão XGBoost            | 961.176 +/- 66.5849   |	0.134 +/- 0.007	  | 1403.1786 +/- 96.2286  |
 
 O melhor resultado deu-se pela Regressão Random Forest, porém por questão de estudo aplicaremos a Regressão XGBoost que não teve um resultado tão abaixo mas que possui um custo de armazenamento muito menor que o da Random Forest.
+
+Após todos esses cálculos também realizamos a técnica 'Hyperparameter Fine Tunning' para a otimização dos parâmetros do modelo de ML.
+
+## 3.7 Avaliação do Algoritmo
+
+
+
+## 3.8 Deploy do Modelo em Produção
+
+Para que o CFO tivesse todas as informações sobre as lojas de qualquer lugar com acesso a internet, configuramos um Bot no Telegram que nos da a previsão de vendas de qualquer loja em dois formatos: a previsão diária durante as próximas seis semanas e a previsão total dessas seis semanas. 
+
+
+
+![telegram](https://user-images.githubusercontent.com/102927918/180664797-ee82a775-94f0-48fa-ba0b-b7cfc82da5b9.mp4)
+
+
+
 
 
