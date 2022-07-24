@@ -187,7 +187,7 @@ Os erros encontrados para cada modelos foram:
 | Regressão Linear              | 1870.16131 | 0.29509 | 2667.88331 |
 | Regressão Linear Regularizado | 1891.19496 | 0.28987 | 2741.00328 |
 | Regressão Random Forest       | 723.53226  | 0.10699 | 1077.12693 |
-| Rregressão XGBoost            | 871.06206	 | 0.12813 | 1271.58178 |
+| Regressão XGBoost            | 871.06206	 | 0.12813 | 1271.58178 |
 
 Após o cross-validation os erros foram:
 
@@ -196,19 +196,38 @@ Após o cross-validation os erros foram:
 | Regressão Linear              | 1925.3411 +/- 39.4565 |	0.2917 +/- 0.0058 |	2758.5347 +/- 71.9813  |
 | Regressão Linear Regularizado | 1958.2725 +/- 49.3824 |	0.2865 +/- 0.0023	| 2848.217 +/- 78.8584   |
 | Regressão Random Forest       | 790.9915 +/- 81.7962  |	0.1126 +/- 0.0114 |	1201.1863 +/- 150.5484 |
-| Rregressão XGBoost            | 961.176 +/- 66.5849   |	0.134 +/- 0.007	  | 1403.1786 +/- 96.2286  |
+| Regressão XGBoost             | 961.176 +/- 66.5849   |	0.134 +/- 0.007	  | 1403.1786 +/- 96.2286  |
 
 O melhor resultado deu-se pela Regressão Random Forest, porém por questão de estudo aplicaremos a Regressão XGBoost que não teve um resultado tão abaixo mas que possui um custo de armazenamento muito menor que o da Random Forest.
 
-Após todos esses cálculos também realizamos a técnica 'Hyperparameter Fine Tunning' para a otimização dos parâmetros do modelo de ML.
+Após todos esses cálculos também realizamos a técnica 'Hyperparameter Fine Tunning' para a otimização dos parâmetros do modelo de ML e o resultado dos erros foram:
+
+| Modelo                        | MAE                   | MAPE              | RMSE                   |
+|-------------------------------|-----------------------|-------------------|------------------------|
+| Regressão XGBoost             | 758.6882 +/- 56.546   |	0.1098 +/- 0.0038 | 1085.653 +/- 93.4135   |
 
 ## 3.7 Avaliação do Algoritmo
 
+### 3.7.1 Performance de Negócio
+Finalmente, com o modelo treinado e com os erros calculados, podemos calcular a estimativa de vendas da empresa. Realizando a soma de todas as previsões de vendas cehgamos no valore de $ 289.741.984,00. Porém, é necessário considerar o erro de  aproximadamente 10% (MAPE), chegando nos seguintes resultados:
 
+| Cenário        | Previsão        |
+|--------        | ---------       |
+| Pior Cenário   |$ 259.377.024,00 |
+| Média          |$ 289.741.984,00 |
+| Melhor Cenário |$ 320.106.944,00 |
+
+### 3.7.2 Performance do Modelo
+
+Abaixo seguem quatro gráfico que resumem a avaliação do modelo de Machine Learning.
+
+![alt text](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/avaliacao_erro.png)
+
+No primeiro gráfico, vemos o quão próximas estão as curvas de previsão e de vendas. O segundo é um gráfico da data x taxa de erro, onde a linha tracejada indica que a previsão foi igual a venda, nota-se que a taxa foi no máximo 15% superior e no mínimo 15% inferior. O terceiro gráfico é um histograma do erros (diferença entre a previsão e o valor real), notamos que é muito próxma da curva normal, o que indica um ótimo resultado. E no último vemos que a distribuição das previsão com seus erros formam um "tubo", com poucos *outliers*, o que também caracteriza um bom resultado.
 
 ## 3.8 Deploy do Modelo em Produção
 
-Para que o CFO tivesse todas as informações sobre as lojas de qualquer lugar com acesso a internet, configuramos um Bot no Telegram que nos da a previsão de vendas de qualquer loja em dois formatos: a previsão diária durante as próximas seis semanas e a previsão total dessas seis semanas. 
+Para que o CFO tivesse todas as informações sobre as lojas de qualquer lugar com acesso a internet, configuramos um Bot no Telegram que nos da a previsão de vendas de qualquer loja em dois formatos: a previsão diária durante as próximas seis semanas e a previsão total dessas seis semanas. O deploy foi realizado no Heroku.
 
 https://user-images.githubusercontent.com/102927918/180664797-ee82a775-94f0-48fa-ba0b-b7cfc82da5b9.mp4
 
