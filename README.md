@@ -210,7 +210,7 @@ Após todos esses cálculos também realizamos a técnica 'Hyperparameter Fine T
 
 Para que o CFO tivesse todas as informações sobre as lojas de qualquer lugar com acesso a internet, configuramos um Bot no Telegram que nos da a previsão de vendas de qualquer loja em dois formatos: a previsão diária durante as próximas seis semanas e a previsão total dessas seis semanas. 
 
-[![rossmann_telegram](https://github.com/jonasbarletta/ds_em_producao/blob/main/img/rossmann_logo.png)](https://user-images.githubusercontent.com/102927918/180664797-ee82a775-94f0-48fa-ba0b-b7cfc82da5b9.mp4)
+https://user-images.githubusercontent.com/102927918/180664797-ee82a775-94f0-48fa-ba0b-b7cfc82da5b9.mp4
 
 
 
