@@ -247,7 +247,9 @@ Após o primeiro ciclo das etapas novos ciclos devem ser realizados, afim que no
 
 # 6 Referências
 [1] LOPES, Meigarom. Curso DS em Produção - Comunidade DS.
+
 [2] Wikpédia. Cramér's V, https://en.wikipedia.org/wiki/Cram%C3%A9r%27s_V, último acesso: 24/07/2022
+
 [3] ROY, Baijayanta, All about Categorical Variable Encoding, https://towardsdatascience.com/all-about-categorical-variable-encoding-305f3361fd02, último acesso: 24/07/2022
 
 
