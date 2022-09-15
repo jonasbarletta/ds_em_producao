@@ -49,7 +49,7 @@ Podemos ver que o problema é do CFO da empresa e não dos gerentes. Então o CF
 
 - Qual é o formato da solução? (Granularidade, tipo de problema, potenciais métodos, formato da entrega)
 
-A granularidade será vendas por dia por loja. O problema é de previsão de vendas. Utilizaremos regressão de séries temporais. Ao final do projeto o CFO  poderá acessar a solução via celular com acesso a interne
+A granularidade será vendas por dia por loja. O problema é de previsão de vendas. Utilizaremos regressão de séries temporais. Ao final do projeto o CFO  poderá acessar a solução via celular com acesso a internet.
 
 ## 3.2 Coleta de Dados
 
